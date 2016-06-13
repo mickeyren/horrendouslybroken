@@ -57,6 +57,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'capybara-screenshot'
 end
 
 # Use ActiveModel has_secure_password
