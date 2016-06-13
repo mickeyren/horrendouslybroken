@@ -34,7 +34,7 @@ describe Post do
     end
     it "should disallow invalid urls" do
       post.url = 'asdasdasd'
-      post.should be_valid
+      post.should_not be_valid
     end
   end
   context "assocications" do
