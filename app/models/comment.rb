@@ -1,3 +1,4 @@
-class Comment
-  attr_accessor :post_id
+class Comment < ActiveRecord::Base
+  belongs_to :post
+  belongs_to :user
 end
