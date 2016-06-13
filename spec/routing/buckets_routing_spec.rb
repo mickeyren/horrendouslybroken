@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe BucketsController do
-  describe "routing" do
+  describe "routing", type: :routing do
 
     it "routes to #index" do
       get("/buckets").should route_to("buckets#index")

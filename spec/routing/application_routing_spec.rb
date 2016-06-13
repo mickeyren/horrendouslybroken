@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe PostsController, type: :routing do
-  describe "routing" do
+describe PostsController do
+  describe "routing", type: :routing do
     it "routes to posts#index" do
       get("/").should route_to("posts#index")
     end
