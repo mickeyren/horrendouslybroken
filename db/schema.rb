@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20130730192329) do
 
-  create_table "buckets", force: true do |t|
+  create_table "buckets", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "url"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20130730192329) do
 
   add_index "posts", ["bucket_id"], name: "index_posts_on_bucket_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "Anonymous Coward", null: false
     t.string   "email",                  default: "",                 null: false
     t.string   "encrypted_password",     default: "",                 null: false
