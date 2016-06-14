@@ -4,7 +4,7 @@ Horrendouslybroken::Application.routes.draw do
     resources :comments
   end
 
-  resources :buckets
+  resources :buckets, :comments
   resources :posts, concerns: :commentable
 
   get "welcome/index"
