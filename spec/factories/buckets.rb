@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :bucket do
-    name "MyString"
+    name 'The Bucket'
+    description { Faker::Lorem.paragraphs(1).first }
   end
 end
