@@ -16,28 +16,28 @@ describe CommentsController do
       end
 
       it "assigns a newly created comment as @comment" do
-        post :create, {:comment => valid_attributes}, valid_session
+        post :create, {post_id: post_one.id, :comment => valid_attributes_for_comment}, valid_session
         assigns(:comment).should be_a(Comment)
         assigns(:comment).should be_persisted
       end
 
-      it "redirects to the created comment" do
-        post :create, {:comment => valid_attributes}, valid_session
-        response.should redirect_to(Comment.last)
+      it "redirects to the post with the new comment" do
+        post :create, {post_id: post_one.id, :comment => valid_attributes_for_comment}, valid_session
+        response.should redirect_to(post_one)
       end
     end
     describe "with invalid params" do
       it "assigns a newly created but unsaved post as @comment" do
         # Trigger the behavior that occurs when invalid params are submitted
         Comment.any_instance.stub(:save).and_return(false)
-        post :create, {:comment => {  }}, valid_session
+        post :create, { post_id: post_one.id, :comment => { }}, valid_session
         assigns(:post).should be_a_new(Comment)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Comment.any_instance.stub(:save).and_return(false)
-        post :create, {:comment => {  }}, valid_session
+        post :create, { post_id: post_one.id, :comment => {  }}, valid_session
         response.should render_template("new")
       end
     end
