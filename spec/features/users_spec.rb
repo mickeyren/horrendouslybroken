@@ -20,8 +20,9 @@ feature 'signing up' do
   scenario 'viewing my details on the registration edit page' do
     sign_up
     visit edit_user_registration_path
-    page.should have_content(valid_attributes[:name])
-    page.should have_content(valid_attributes[:email])
+
+    page.should have_field('Name', with: valid_attributes[:name])
+    page.should have_field('Email', with: valid_attributes[:email])
   end
 
   scenario 'editing my details on the registration edit page' do
