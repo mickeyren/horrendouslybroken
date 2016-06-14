@@ -3,14 +3,15 @@ require 'spec_helper'
 describe CommentsController do
   let(:bucket) { FactoryGirl.create(:bucket) }
   let(:post) { FactoryGirl.create(:post, bucket: bucket) }
-  let(:valid_attributes) { FactoryGirl.attributes_for(:comment, post: post) }
+  let(:valid_attributes_for_post) { FactoryGirl.attributes_for(:post, bucket: bucket) }
+  let(:valid_attributes_for_comment) { FactoryGirl.attributes_for(:comment, post: post) }
   let(:valid_session) { {} }
 
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Post" do
         expect {
-          post :create, {:comment => valid_attributes}, valid_session
+          post :create, {post: valid_attributes_for_post, comment: valid_attributes_for_comment}, valid_session
         }.to change(Comment, :count).by(1)
       end
 
