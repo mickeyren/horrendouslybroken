@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Bucket do
-  let(:bucket) { FactoryGirl.create(:bucket, name: 'The Bucket') }
+  let!(:bucket) { FactoryGirl.create(:bucket) }
+
   context "attributes" do
     it "should have a name" do
       bucket.should respond_to(:name)
@@ -13,7 +14,8 @@ describe Bucket do
   end
   context "validations" do
     it "should have a unique name" do
-      new_bucket = FactoryGirl.build(:bucket, name: 'The Bucket')
+      new_bucket = FactoryGirl.build(:bucket, name: 'The Bucket', description: Faker::Lorem.paragraphs(1).first)
+
       new_bucket.should_not be_valid
     end
 
@@ -55,7 +57,7 @@ describe Bucket do
       bucket.should respond_to(:posts)
     end
     it "should have posts of class Post" do
-      bucket.posts.all {|post| post.is_a?(Post)}.should be_true
+      bucket.posts.all {|post| post.is_a?(Post)}.should be_truthy
     end
   end
 end
